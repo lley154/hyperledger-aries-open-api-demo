@@ -27,7 +27,7 @@ docker logs -f alice
 ```
 Open a browser tab and confirm you can access the Swagger APIs for Alice at http://localhost:8031.
 
-## Creating a Connection
+## Creating a connection
 Looking at the log output from Faber, copy the entire block of the invitation object, from the curly brackets {}, excluding the trailing comma.
 
 For example
@@ -46,6 +46,28 @@ In Alice's API, find the ```/didexchange/{conn_id}/accept-invitation``` endpoint
 If you look at the log output for Faber, you should also see the connection ```state``` has changed to ```active```.  Please note that the connection id will be different betwee Alice and Faber, but has the same ```invitation_msg_id```.
 
 Check the list of connections for both Alice and Faber by executing /connections endpoint.
+
+### Sending a message
+Using Alice's API, find the /connections/{conn_id}/send-message endpoint.  Copy the connection_id for Alice's log output use it for the conn_id, and also add the text "Hello World".
+
+
+### Preparing a Credential
+The ./run_demo faber" (and "./run_demo alice") scripts to start up our agents created the following:
+
+- registered a public DID and stored it on the ledger;
+- created a schema and registered it on the ledger;
+- created a credential definition and registered it on the ledge
+
+To find the wallet DID of an agent, find the /wallet/did/public endpoint and execute it.  Copy the DID in your clipboard.
+
+Go to the online test ledger http://test.bcovrin.vonx.io/
+Select the Indy Scan link at the bottom of the page which takes you to http://test.bcovrin.vonx.io:3707/home/BCOVRIN_TEST
+
+Select the domain tab and enter the DID in the search bar.  You should see something similiar to the following:
+
+![image](https://github.com/user-attachments/assets/082fa2f3-6ad8-476f-9cad-698c9a251dae)
+
+
 
 ### Issuing a credential
 
