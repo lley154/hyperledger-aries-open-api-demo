@@ -76,9 +76,9 @@ Now we are ready to issue a credential.
 
 Relace the following values for the curl command below and execute it in a new terminal window.
 
-- issuer_did the Faber public DID (use GET /wallet/DID/public),
-- schema_id the Id of the schema Faber created (use GET /schemas/created) and,
-- cred_def_id the Id of the credential definition Faber created (use GET /credential-definitions/created)
+- ```issuer_did``` the Faber public DID (use GET /wallet/DID/public),
+- ```schema_id``` the Id of the schema Faber created (use GET /schemas/created) and,
+- ```cred_def_id``` the Id of the credential definition Faber created (use GET /credential-definitions/created)
 - replace 76.46.99 with your schema version by looking at the Faber log output
 
 ```
