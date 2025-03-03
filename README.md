@@ -41,15 +41,18 @@ Please use the following payload for creating an invitation:
 ```
 Copy the entire block of the invitation object, from the curly brackets {}, excluding the trailing comma.
 
-To receive the invitation by Alice, go the Alice's API http://localhost:8031 and find the ```/out-of-band/eceive-invitation endpoint.
+To receive the invitation by Alice, go the Alice's API http://localhost:8031 and find the ```/out-of-band/receive-invitation``` endpoint.
 
 Replace the pre-populated text with the invitation object from Faber.
 
-Next, we need Alice to accept the invitation.  Looking at the log out for Alice, we can see the ```contection_id``.  
+Next, we need Alice to accept the invitation.  Looking at the log out for Alice, we can see the ```contection_id```.  
 
-In Alice's API, find the ```/connections/{conn_id}/accept-invitation``` endpoint, and use the connection_id found int Alice's log output.
+In Alice's API, find the ```/didexchange/{conn_id}/accept-invitation``` endpoint, and use the connection_id found int Alice's log output.
 
-If you look at the log output for Faber, you should also see the connection state has changed to connected.  Please note that the connection id will be different betwee Alice and Faber, but has the same XXX.
+If you look at the log output for Faber, you should also see the connection state has changed to connected.  Please note that the connection id will be different betwee Alice and Faber, but has the same ```invitation_msg_id```.
+
+Go back to Faber's API http://localhost:8021 and find the ```/didexchange/{conn_id}/accept-invitation``` endpoint, and use the ```connection_id``` found int Fabers's log output.
+
 
 
 
