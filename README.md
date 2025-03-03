@@ -51,7 +51,7 @@ Check the list of connections for both Alice and Faber by executing /connections
 Using Alice's API, find the /connections/{conn_id}/send-message endpoint.  Copy the connection_id for Alice's log output use it for the conn_id, and also add the text "Hello World".
 
 
-### Preparing a Credential
+### Preparing a credential
 The ./run_demo faber" (and "./run_demo alice") scripts to start up our agents created the following:
 
 - registered a public DID and stored it on the ledger;
@@ -67,10 +67,67 @@ Select the domain tab and enter the DID in the search bar.  You should see somet
 
 ![image](https://github.com/user-attachments/assets/082fa2f3-6ad8-476f-9cad-698c9a251dae)
 
+Next, find the corresponding schema using the Faber API /schemas/created endpoint. Copy this value into a text editor for later use.
 
+Next, find the credential definition using the Faber API /credential-definitions/created endpoint. Copy this value into a text editor for later use.
 
 ### Issuing a credential
+Now we are ready to issue a credential. 
 
+Relace the following values for the curl command below and execute it in a new terminal window.
+
+- issuer_did the Faber public DID (use GET /wallet/DID/public),
+- schema_id the Id of the schema Faber created (use GET /schemas/created) and,
+- cred_def_id the Id of the credential definition Faber created (use GET /credential-definitions/created)
+- replace 76.46.99 with your schema version by looking at the Faber log output
+
+```
+curl -X POST 'http://localhost:8021/issue-credential-2.0/send' \
+-H 'Content-Type: application/json' \
+-d '{
+  "connection_id": "30385f20-30f9-4949-ab94-e1ef2b09740f",
+  "filter": {
+    "indy": {
+      "schema_id": "BdH67XxU3cGJAtnkf6pZpS:2:degree schema:76.46.99",
+      "schema_issuer_did": "BdH67XxU3cGJAtnkf6pZpS",
+      "schema_name": "degree schema",
+      "schema_version": "76.46.99",
+      "cred_def_id": "BdH67XxU3cGJAtnkf6pZpS:3:CL:2706685:faber.agent.degree_schema",
+      "issuer_did": "BdH67XxU3cGJAtnkf6pZpS"
+    }
+  },
+  "comment": "Issuing degree credential",
+  "credential_preview": {
+    "@type": "https://didcomm.org/issue-credential/2.0/credential-preview",
+    "attributes": [
+      {
+        "name": "degree",
+        "value": "Bachelor of Computer Science"
+      },
+      {
+        "name": "birthdate_dateint",
+        "value": "19900101"
+      },
+      {
+        "name": "date",
+        "value": "2024-03-19"
+      },
+      {
+        "name": "timestamp",
+        "value": "1710864000"
+      },
+      {
+        "name": "name",
+        "value": "John Doe"
+      }
+    ]
+  },
+  "auto_remove": true,
+  "trace": true
+}'
+```
+
+Look at the log outpus for both Faber and Alice and you will notice a number of communication exchanges to accept the credential.
 
 
 
