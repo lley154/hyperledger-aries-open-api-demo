@@ -129,7 +129,7 @@ curl -X POST 'http://localhost:8021/issue-credential-2.0/send' \
 
 Look at the log outpus for both Faber and Alice and you will notice a number of communication exchanges to accept the credential.
 
-To save the credential in Alice's wallet, copy the ```cred_ex_id``` and then using Alice's API, execute the ```/issue-credential-2.0/records/{cred_ex_id}/store``` endpoint with the ```cred_ex_id```.  Ignore the payload field for now.
+To save the credential in Alice's wallet, copy the ```cred_ex_id``` from Alice's credential log output and then using Alice's API, execute the ```/issue-credential-2.0/records/{cred_ex_id}/store``` endpoint with the ```cred_ex_id```.  Ignore the payload field for now.
 
 ### List the credential in Alice's wallet
 Using Alice's API, find and execute the /credentials endpoint.
