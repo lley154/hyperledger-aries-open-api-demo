@@ -74,7 +74,7 @@ Next, find the credential definition using the Faber API ```/credential-definiti
 ### Issuing a credential
 Now we are ready to issue a credential. 
 
-Relace the following values for the curl command below and execute it in a new terminal window.
+Relace the following values for the curl command below and execute it in a new terminal window. 
 
 - ```connection_id``` with the connection ID in Faber log output
 - ```schema_id``` the Id of the schema Faber created (use ```GET /schemas/created```) and,
@@ -126,6 +126,51 @@ curl -X POST 'http://localhost:8021/issue-credential-2.0/send' \
   "auto_remove": true,
   "trace": true
 }'
+```
+
+If you do not have curl on your computer, then you can use the Faber API (http://localhost:8021/api/doc#/issue-credential%20v2.0/post_issue_credential_2_0_send).  For example: 
+```
+{
+  "connection_id": "30385f20-30f9-4949-ab94-e1ef2b09740f",
+  "filter": {
+    "indy": {
+      "schema_id": "BdH67XxU3cGJAtnkf6pZpS:2:degree schema:76.46.99",
+      "schema_issuer_did": "BdH67XxU3cGJAtnkf6pZpS",
+      "schema_name": "degree schema",
+      "schema_version": "76.46.99",
+      "cred_def_id": "BdH67XxU3cGJAtnkf6pZpS:3:CL:2706685:faber.agent.degree_schema",
+      "issuer_did": "BdH67XxU3cGJAtnkf6pZpS"
+    }
+  },
+  "comment": "Issuing degree credential",
+  "credential_preview": {
+    "@type": "https://didcomm.org/issue-credential/2.0/credential-preview",
+    "attributes": [
+      {
+        "name": "degree",
+        "value": "Bachelor of Computer Science"
+      },
+      {
+        "name": "birthdate_dateint",
+        "value": "19900101"
+      },
+      {
+        "name": "date",
+        "value": "2024-03-19"
+      },
+      {
+        "name": "timestamp",
+        "value": "1710864000"
+      },
+      {
+        "name": "name",
+        "value": "John Doe"
+      }
+    ]
+  },
+  "auto_remove": true,
+  "trace": true
+}
 ```
 
 Look at the log outpus for both Faber and Alice and you will notice a number of communication exchanges to accept the credential.
