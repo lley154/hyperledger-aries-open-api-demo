@@ -127,7 +127,7 @@ curl -X POST 'http://localhost:8021/issue-credential-2.0/send' \
   "trace": true
 }'
 ```
-For windows users, use need to use the following format
+For windows users, you need to use the following format
 ```
    curl.exe -X POST -H "Content-Type: application/json" -d "{\"key\":\"value\"}" http://example.com
 ```
