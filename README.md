@@ -127,50 +127,9 @@ curl -X POST 'http://localhost:8021/issue-credential-2.0/send' \
   "trace": true
 }'
 ```
-
-If you do not have curl on your computer, then you can use the Faber API (http://localhost:8021/api/doc#/issue-credential%20v2.0/post_issue_credential_2_0_send).  For example: 
+For windows users, use need to use the following format
 ```
-{
-  "connection_id": "30385f20-30f9-4949-ab94-e1ef2b09740f",
-  "filter": {
-    "indy": {
-      "schema_id": "BdH67XxU3cGJAtnkf6pZpS:2:degree schema:76.46.99",
-      "schema_issuer_did": "BdH67XxU3cGJAtnkf6pZpS",
-      "schema_name": "degree schema",
-      "schema_version": "76.46.99",
-      "cred_def_id": "BdH67XxU3cGJAtnkf6pZpS:3:CL:2706685:faber.agent.degree_schema",
-      "issuer_did": "BdH67XxU3cGJAtnkf6pZpS"
-    }
-  },
-  "comment": "Issuing degree credential",
-  "credential_preview": {
-    "@type": "https://didcomm.org/issue-credential/2.0/credential-preview",
-    "attributes": [
-      {
-        "name": "degree",
-        "value": "Bachelor of Computer Science"
-      },
-      {
-        "name": "birthdate_dateint",
-        "value": "19900101"
-      },
-      {
-        "name": "date",
-        "value": "2024-03-19"
-      },
-      {
-        "name": "timestamp",
-        "value": "1710864000"
-      },
-      {
-        "name": "name",
-        "value": "John Doe"
-      }
-    ]
-  },
-  "auto_remove": true,
-  "trace": true
-}
+   curl.exe -X POST -H "Content-Type: application/json" -d "{\"key\":\"value\"}" http://example.com
 ```
 
 Look at the log outpus for both Faber and Alice and you will notice a number of communication exchanges to accept the credential.
