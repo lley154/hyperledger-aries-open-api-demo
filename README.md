@@ -78,7 +78,7 @@ Relace the following values for the curl command below and execute it in a new t
 
 - ```connection_id``` with the connection ID in Faber log output
 - ```schema_id``` the Id of the schema Faber created (use ```GET /schemas/created```) and,
-- ```schema_issuer_did``` the Faber public DID
+- ```schema_issuer_did``` the Faber public DID (use ```GET /wallet/DID/public```)
 - ```schema_version``` with the new schema version from the Faber log output
 - ```cred_def_id``` the Id of the credential definition Faber created (use ```GET /credential-definitions/created```)
 - ```issuer_did``` the Faber public DID (use ```GET /wallet/DID/public```),
